@@ -1,0 +1,49 @@
+{
+  "name": "t29-wp",
+  "version": "0.1.0",
+  "description": "A collection of scripts to assist in development and maintenance of WordPress themes aligned to Wordpress and Three29's conventions/standards.",
+  "type": "module",
+  "engines": {
+    "node": ">=14.16"
+  },
+  "bin": {
+    "t29-wp": "./bin/t29-wp.js"
+  },
+  "keywords": [],
+  "author": "Three29 Media LLC <support@three29.com> (https://three29.com)",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/three29/t29-wp.git"
+  },
+  "dependencies": {
+    "@babel/core": "^7.21.5",
+    "@babel/preset-env": "^7.21.5",
+    "@svgr/webpack": "^7.0.0",
+    "@wordpress/babel-preset-default": "^7.16.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^4.15.0",
+    "@wordpress/eslint-plugin": "^14.5.0",
+    "@wordpress/postcss-plugins-preset": "^4.16.0",
+    "@wordpress/prettier-config": "^2.15.0",
+    "babel-loader": "^9.1.2",
+    "browserslist": "^4.21.5",
+    "chalk": "^5.2.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-spawn": "^7.0.3",
+    "cssnano": "^6.0.1",
+    "glob": "^10.2.2",
+    "mini-css-extract-plugin": "^2.7.5",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.0",
+    "prettier": "^2.8.8",
+    "resolve-bin": "^1.0.1",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "source-map-loader": "^4.0.1",
+    "terser-webpack-plugin": "^5.3.7",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  }
+}

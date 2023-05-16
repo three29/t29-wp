@@ -1,0 +1,13 @@
+[production]
+last 2 Safari major versions
+last 2 Edge major versions
+last 2 ios_saf major versions
+last 2 ff major versions
+last 2 and_ff major versions
+last 2 chrome major versions
+last 2 and_chr major versions
+last 2 samsung versions
+
+[development]
+last 1 chrome version
+last 1 firefox version

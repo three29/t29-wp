@@ -194,9 +194,12 @@ const config = {
                 use: [
                     ...cssLoaders,
                     {
-                        loader: require.resolve( 'sass-loader' ),
+                        loader: 'resolve-url-loader'
+                    },
+                    {
+                        loader: require.resolve('sass-loader'),
                         options: {
-                            sourceMap: ! isProduction,
+                            sourceMap: !isProduction,
                         },
                     },
                 ],

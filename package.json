@@ -39,6 +39,7 @@
     "postcss-loader": "^7.3.0",
     "prettier": "^2.8.8",
     "resolve-bin": "^1.0.1",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
     "source-map-loader": "^4.0.1",

@@ -55,8 +55,18 @@ const cssLoaders = [
         options: {
             sourceMap: ! isProduction,
             modules: {
-                auto: true,
+                auto: true
             },
+            url: {
+                filter: ( url ) => {
+                    // Don't handle images under root-relative /wp-content/uploads
+                    if (/^\/wp-content\/uploads\//.test(url)) {
+                        return false;
+                    }
+
+                    return true;
+                }
+            }
         },
     },
     {
@@ -197,9 +207,9 @@ const config = {
                         loader: 'resolve-url-loader'
                     },
                     {
-                        loader: require.resolve('sass-loader'),
+                        loader: require.resolve( 'sass-loader' ),
                         options: {
-                            sourceMap: !isProduction,
+                            sourceMap: true
                         },
                     },
                 ],
@@ -219,7 +229,7 @@ const config = {
                 test: /\.(bmp|png|jpe?g|gif|webp)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'images/[name].[hash:8][ext]',
+                    filename: 'images/[name].[hash:8][ext]'
                 },
             },
             {
@@ -284,7 +294,6 @@ const config = {
                     noErrorOnMissing: true,
                     filter: ( filepath ) => {
                         return (
-                            process.env.WP_COPY_PHP_FILES_TO_DIST ||
                             renderPaths.includes( filepath )
                         );
                     },
@@ -342,5 +351,4 @@ if ( config.devtool ) {
         enforce: 'pre',
     } );
 }
-
 export default config;

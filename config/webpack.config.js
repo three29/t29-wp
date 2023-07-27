@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module';
+import path from 'node:path';
 
 /**
  * External dependencies
@@ -41,7 +42,7 @@ let target = 'browserslist';
 if ( ! browserslist.findConfig( '.' ) ) {
     target += ':' + getCLIConfig( '.browserslistrc' );
 }
-const hasReactFastRefresh = false; //hasArgInCLI( '--hot' ) && ! isProduction;
+const hasReactFastRefresh = true; //hasArgInCLI( '--hot' ) && ! isProduction;
 
 // Get paths of the `render` props included in `block.json` files
 const renderPaths = getRenderPropPaths();
@@ -120,6 +121,7 @@ const config = {
     optimization: {
         // Only concatenate modules in production, when not analyzing bundles.
         concatenateModules: isProduction && ! process.env.WP_BUNDLE_ANALYZER,
+        runtimeChunk: hasReactFastRefresh ? 'single' : false,
         splitChunks: {
             cacheGroups: {
                 style: {
@@ -298,6 +300,11 @@ const config = {
                         );
                     },
                 },
+                hasReactFastRefresh && {
+                    from: join(getWordPressRoot(), 't29-wp', 'inc', 'hmr.php'),
+                    to: join(getWordPressRoot(), 'tmp', 'fast-refresh', 'hmr.php'),
+                    noErrorOnMissing: false,
+                },
             ],
         } ),
         // The WP_BUNDLE_ANALYZER global variable enables a utility that represents
@@ -340,6 +347,16 @@ if ( ! isProduction ) {
             },
         },
     };
+}
+
+if (hasReactFastRefresh) {
+    // look for a chunk named 'runtime' and make it go to 'fast-refresh/hmr.runtime.js'
+    config.output.chunkFilename = (pathData) => {
+        if (pathData.chunk.name === 'runtime') {
+            return 'tmp/fast-refresh/hmr.runtime.js';
+        }
+        return '[name].js';
+    }
 }
 
 // Add source-map-loader if devtool is set, whether in dev mode or not.

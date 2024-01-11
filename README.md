@@ -5,7 +5,7 @@ is heavily inspired from `wp-scripts` and `react-scripts`.
 
 ## Installation
 Run the following command to install:
-`npm install --save-dev https://github.com/three29/t29-wp`
+`npm install --save-dev t29-wp`
 
 ## Available Scripts
 #### Build
